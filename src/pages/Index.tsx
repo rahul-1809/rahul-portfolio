@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Github, Linkedin, Mail, Code, Trophy, GraduationCap, Briefcase, Star, ExternalLink, Download, Menu, X, ArrowRight, MapPin, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -64,19 +63,19 @@ const Index = () => {
       title: 'Real-Time Speech Translator',
       description: 'Real-time multilingual speech-to-speech translation using Google Generative AI. Achieved low latency and integrated TTS output with MP3 download.',
       tech: ['Gemini', 'SpeechRecognition', 'Streamlit', 'Google TTS'],
-      github: 'https://github.com/rahul-1809'
+      github: 'https://github.com/rahul-1809/voice-translator.git'
     },
     {
       title: 'Automated College Placement Portal',
       description: 'Role-based platform for job posting, applications, and interview scheduling with real-time updates.',
       tech: ['Flask', 'SQLite3', 'HTML', 'CSS', 'JavaScript'],
-      github: 'https://github.com/rahul-1809'
+      github: 'https://github.com/rahul-1809/College-Placement-Portal.git'
     },
     {
       title: 'Toxic Comment Detection',
       description: 'BiLSTM-based model for multi-label toxicity detection with a Gradio interface for real-time predictions.',
       tech: ['TensorFlow', 'BiLSTM', 'Gradio'],
-      github: 'https://github.com/rahul-1809'
+      github: 'https://github.com/rahul-1809/Comment-Toxicity.git'
     }
   ];
 
@@ -94,7 +93,7 @@ const Index = () => {
       grade: '96.8%'
     },
     {
-      institution: 'Srujana Vidyalaya, SSC Board',
+      institution: 'Srujana Vidyalaya, Rajam',
       degree: 'Secondary School Certificate (SSC)',
       period: '2020',
       grade: 'CGPA: 9.82'
@@ -102,15 +101,27 @@ const Index = () => {
   ];
 
   const achievements = [
-    '🏆 1st Place – DataCraze (Stepcone): Data mining and predictive modeling (50+ participants)',
-    '🥇 1st Place – DataViz (Stepcone 2024): Visual storytelling and insights'
+    '🏆 1st Place – DataCraze (Stepcone 2025): data mining and predictive modeling to extract actionable insights from complex datasets.',
+    '🥇 1st Place – DataViz (Stepcone 2024): data visualization techniques that improved data interpretation and decision-making.'
   ];
 
   const certifications = [
-    'Complete Data Science, ML, DL, NLP Bootcamp (Udemy, 2024)',
-    'Deep Learning (NPTEL, IIT Ropar, 2024) – 92%, top 1%',
-    'Data Analysis with Python (freeCodeCamp, 2024)',
-    'Python Preparatory (Intellipaat, 2024)'
+    {
+      title: 'Complete Data Science, ML, DL, NLP Bootcamp (Udemy, 2024)',
+      link: 'https://udemy-certificate.s3.amazonaws.com/image/UC-a86a8e70-46a8-4c2e-a952-27aefdfe60dd.jpg?v=1747665449000'
+    },
+    {
+      title: 'Deep Learning (NPTEL, IIT Ropar, 2024) – 92%, top 1%',
+      link: 'https://internalapp.nptel.ac.in/NOC/NOC25/SEM1/Ecertificates/106/noc25-cs21/Course/NPTEL25CS21S96040005604296947.pdf'
+    },
+    {
+      title: 'Data Analysis with Python (freeCodeCamp, 2024)',
+      link: 'https://www.freecodecamp.org/certification/rahul_1809/data-analysis-with-python-v7'
+    },
+    {
+      title: 'Python Preparatory (Intellipaat, 2024)',
+      link: 'https://lms.intellipaat.com/certificate-link/?Yz1jdXMtMTEyNjgyOCZ1PTI4ODExMCZleHQ9MQ=='
+    }
   ];
 
   const internships = [
@@ -305,6 +316,17 @@ const Index = () => {
             </p>
           </div>
           
+          <div className="mb-16">
+            <div className="bg-white rounded-2xl p-8 shadow-lg border-0 max-w-4xl mx-auto">
+              <p className="text-lg text-gray-700 leading-relaxed">
+                I'm Patnala Rahul, a Computer Science undergraduate with a strong passion for Artificial Intelligence and Machine Learning. I'm deeply driven by the power of technology to solve real-world problems and improve lives through intelligent systems.
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed mt-4">
+                I enjoy exploring how data can be transformed into meaningful insights and building solutions that are not only functional but impactful. My strengths lie in analytical thinking and the ability to adapt and collaborate in diverse environments.
+              </p>
+            </div>
+          </div>
+          
           {/* Education Timeline */}
           <div className="mb-16">
             <h3 className="text-2xl font-semibold mb-8 text-gray-900 flex items-center">
@@ -356,15 +378,6 @@ const Index = () => {
                   </CardContent>
                 </Card>
               ))}
-            </div>
-          </div>
-
-          <div className="mt-16 text-center">
-            <div className="bg-white rounded-2xl p-8 shadow-lg border-0 max-w-4xl mx-auto">
-              <h4 className="text-xl font-semibold text-gray-900 mb-4">Career Aspiration</h4>
-              <p className="text-lg text-gray-600">
-                Seeking AI/ML-focused roles to contribute to intelligent system development and innovation.
-              </p>
             </div>
           </div>
         </div>
@@ -513,9 +526,6 @@ const Index = () => {
               <Star className="mr-4 h-10 w-10 text-blue-600" />
               Certifications & Learning
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Continuous learning through industry-recognized certifications and courses
-            </p>
           </div>
           
           <div className="grid md:grid-cols-2 gap-8">
@@ -526,10 +536,16 @@ const Index = () => {
                     <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
                       <Star className="w-6 h-6 text-white" />
                     </div>
-                    <div>
-                      <p className="text-lg font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
-                        {cert}
+                    <div className="flex-1">
+                      <p className="text-lg font-medium text-gray-900 group-hover:text-blue-600 transition-colors mb-3">
+                        {cert.title}
                       </p>
+                      <Button variant="outline" size="sm" asChild>
+                        <a href={cert.link} target="_blank" rel="noopener noreferrer">
+                          <ExternalLink className="mr-2 h-4 w-4" />
+                          View Certificate
+                        </a>
+                      </Button>
                     </div>
                   </div>
                 </CardContent>
