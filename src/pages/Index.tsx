@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Github, Linkedin, Mail, Code, Trophy, GraduationCap, Briefcase, Star, ExternalLink, Download, Menu, X, ArrowRight, MapPin, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -51,7 +52,7 @@ const Index = () => {
 
   const skills = {
     languages: ['C', 'C++', 'Python', 'HTML5', 'CSS', 'JavaScript'],
-    frameworks: ['Flask', 'FastAPI', 'Streamlit', 'TensorFlow', 'NumPy', 'Pandas', 'Matplotlib', 'Seaborn'],
+    'frameworks & libraries': ['Flask', 'FastAPI', 'Streamlit', 'TensorFlow', 'NumPy', 'Pandas', 'Matplotlib', 'Seaborn'],
     databases: ['MySQL'],
     tools: ['Git', 'GitHub', 'VS Code', 'Google Colab', 'Kaggle'],
     concepts: ['Data Structures & Algorithms', 'OOP', 'Machine Learning', 'Deep Learning'],
@@ -84,13 +85,13 @@ const Index = () => {
       institution: 'GMR Institute of Technology, Rajam',
       degree: 'B.Tech in Computer Science and Engineering (AI & ML)',
       period: 'Nov 2022 – Apr 2026',
-      grade: 'GPA: 9.1'
+      grade: 'CGPA: 9.1'
     },
     {
       institution: 'Sri Viswa Junior College, Visakhapatnam',
       degree: 'Intermediate in Mathematics, Physics, Chemistry (MPC)',
       period: 'Jun 2020 – Apr 2022',
-      grade: '96.8%'
+      grade: 'Percentage: 96.8'
     },
     {
       institution: 'Srujana Vidyalaya, Rajam',
@@ -137,13 +138,6 @@ const Index = () => {
     }
   ];
 
-  const stats = [
-    { number: '3.5', label: 'Years Experience', suffix: '+' },
-    { number: '10', label: 'Projects Completed', suffix: '+' },
-    { number: '2', label: 'Internships', suffix: '' },
-    { number: '92', label: 'Top Percentile', suffix: '%' }
-  ];
-
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
@@ -181,7 +175,7 @@ const Index = () => {
               onClick={() => scrollToSection('contact')} 
               className="hidden md:block bg-purple-600 hover:bg-purple-700"
             >
-              Contact
+              Get In Touch
             </Button>
 
             {/* Mobile menu button */}
@@ -246,7 +240,6 @@ const Index = () => {
                   className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-xl font-medium"
                 >
                   View My Work
-                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
                 <Button 
                   onClick={() => scrollToSection('contact')} 
@@ -268,7 +261,7 @@ const Index = () => {
             <div className="relative">
               <div className="relative z-10">
                 <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+                  src="https://i.postimg.cc/Kj4X3S1D/Screenshot-2025-03-15-203330.png"
                   alt="Patnala Rahul"
                   className="w-80 h-80 mx-auto rounded-3xl object-cover border-4 border-white shadow-2xl"
                 />
@@ -278,30 +271,7 @@ const Index = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-purple-100 to-blue-100 rounded-3xl transform rotate-6 scale-105 -z-10"></div>
               <div className="absolute top-4 right-4 w-24 h-24 bg-purple-200 rounded-full opacity-50"></div>
               <div className="absolute bottom-4 left-4 w-16 h-16 bg-blue-200 rounded-full opacity-50"></div>
-
-              {/* Stats Cards */}
-              <div className="absolute -bottom-8 -left-8 bg-white rounded-2xl p-4 shadow-xl border">
-                <div className="text-2xl font-bold text-purple-600">9.1</div>
-                <div className="text-sm text-gray-600">Current GPA</div>
-              </div>
-              
-              <div className="absolute -top-8 -right-8 bg-white rounded-2xl p-4 shadow-xl border">
-                <div className="text-2xl font-bold text-blue-600">3+</div>
-                <div className="text-sm text-gray-600">Years Learning</div>
-              </div>
             </div>
-          </div>
-
-          {/* Stats Section */}
-          <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-gray-900">
-                  {stat.number}{stat.suffix}
-                </div>
-                <div className="text-gray-600 mt-2">{stat.label}</div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -318,11 +288,14 @@ const Index = () => {
           
           <div className="mb-16">
             <div className="bg-white rounded-2xl p-8 shadow-lg border-0 max-w-4xl mx-auto">
-              <p className="text-lg text-gray-700 leading-relaxed">
-                I'm Patnala Rahul, a Computer Science undergraduate with a strong passion for Artificial Intelligence and Machine Learning. I'm deeply driven by the power of technology to solve real-world problems and improve lives through intelligent systems.
+              <p className="text-lg text-gray-700 leading-relaxed mb-4">
+                I'm Patnala Rahul, a Computer Science undergraduate with a keen interest in Artificial Intelligence and Machine Learning. I enjoy using data to solve real-world problems and build intelligent systems that can make a positive impact.
               </p>
-              <p className="text-lg text-gray-700 leading-relaxed mt-4">
-                I enjoy exploring how data can be transformed into meaningful insights and building solutions that are not only functional but impactful. My strengths lie in analytical thinking and the ability to adapt and collaborate in diverse environments.
+              <p className="text-lg text-gray-700 leading-relaxed mb-4">
+                Over the past few years, I've gained hands-on experience in machine learning, deep learning, and natural language processing. I've worked on projects like disease risk prediction, real-time speech translation, and sentiment analysis, where I applied my skills to create useful, working solutions.
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                I'm always looking to learn, improve, and collaborate on meaningful work. I believe in combining technical knowledge with practical thinking to create solutions that are both innovative and reliable.
               </p>
             </div>
           </div>
@@ -565,7 +538,7 @@ const Index = () => {
           
           <div className="flex flex-wrap justify-center gap-6 mb-12">
             <Button variant="secondary" size="lg" className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-3 rounded-xl" asChild>
-              <a href="mailto:rahul@example.com">
+              <a href="mailto:patnalarahul1809@gmail.com">
                 <Mail className="mr-2 h-5 w-5" />
                 Email Me
               </a>
@@ -577,22 +550,11 @@ const Index = () => {
               </a>
             </Button>
             <Button variant="secondary" size="lg" className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-3 rounded-xl" asChild>
-              <a href="#" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/in/patnala-rahul-0ba801292/" target="_blank" rel="noopener noreferrer">
                 <Linkedin className="mr-2 h-5 w-5" />
                 LinkedIn
               </a>
             </Button>
-          </div>
-
-          <div className="flex flex-wrap justify-center gap-8 text-sm opacity-75">
-            <a href="https://leetcode.com/rahul1809" target="_blank" rel="noopener noreferrer" className="hover:opacity-100 transition-opacity flex items-center">
-              <Code className="inline mr-2 h-4 w-4" />
-              LeetCode
-            </a>
-            <a href="https://www.codechef.com/users/rahul1809" target="_blank" rel="noopener noreferrer" className="hover:opacity-100 transition-opacity flex items-center">
-              <Code className="inline mr-2 h-4 w-4" />
-              CodeChef
-            </a>
           </div>
         </div>
       </section>
@@ -606,8 +568,11 @@ const Index = () => {
             </div>
             <span className="text-lg font-semibold">Patnala Rahul</span>
           </div>
-          <p className="text-gray-400">
-            © 2024 Patnala Rahul. Built with passion for AI/ML innovation.
+          <p className="text-gray-400 mb-4">
+            Building intelligent solutions for tomorrow's challenges
+          </p>
+          <p className="text-gray-500 text-sm">
+            © 2024 Patnala Rahul. All rights reserved.
           </p>
         </div>
       </footer>
