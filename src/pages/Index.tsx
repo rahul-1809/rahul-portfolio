@@ -1,14 +1,25 @@
-
 import { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, Code, Trophy, GraduationCap, Briefcase, Star, ExternalLink, Download, Menu, X, ArrowRight, MapPin, Calendar } from 'lucide-react';
+import { Github, Linkedin, Mail, Code, Trophy, GraduationCap, Briefcase, Star, ExternalLink, Download, Menu, X, ArrowRight, MapPin, Calendar, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { useToast } from '@/hooks/use-toast';
+import emailjs from '@emailjs/browser';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const { toast } = useToast();
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -138,6 +149,48 @@ const Index = () => {
     }
   ];
 
+  const handleContactSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const result = await emailjs.send(
+        'service_4tu3znw',
+        'template_hj5dqhd',
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        'XtG7OL_NXaO0yeQVh'
+      );
+
+      if (result.status === 200) {
+        toast({
+          title: "Message sent successfully!",
+          description: "Thank you for reaching out. I'll get back to you soon.",
+        });
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      }
+    } catch (error) {
+      toast({
+        title: "Failed to send message",
+        description: "Please try again or contact me directly via email.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
@@ -170,13 +223,6 @@ const Index = () => {
                 </button>
               ))}
             </div>
-
-            <Button 
-              onClick={() => scrollToSection('contact')} 
-              className="hidden md:block bg-purple-600 hover:bg-purple-700"
-            >
-              Get In Touch
-            </Button>
 
             {/* Mobile menu button */}
             <button
@@ -263,7 +309,7 @@ const Index = () => {
                 <img
                   src="https://i.postimg.cc/Kj4X3S1D/Screenshot-2025-03-15-203330.png"
                   alt="Patnala Rahul"
-                  className="w-80 h-80 mx-auto rounded-3xl object-cover border-4 border-white shadow-2xl"
+                  className="w-80 h-80 mx-auto rounded-3xl object-cover object-top border-4 border-white shadow-2xl"
                 />
               </div>
               
@@ -319,7 +365,7 @@ const Index = () => {
                           {edu.period}
                         </div>
                       </div>
-                      <Badge variant="secondary" className="mt-3 md:mt-0 bg-purple-100 text-purple-800 px-4 py-2">
+                      <Badge variant="secondary" className="mt-3 md:mt-0 bg-purple-100 text-purple-800">
                         {edu.grade}
                       </Badge>
                     </div>
@@ -530,31 +576,120 @@ const Index = () => {
 
       {/* Contact Section */}
       <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700 text-white">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8">Let's Connect & Collaborate</h2>
-          <p className="text-xl mb-12 opacity-90 max-w-3xl mx-auto">
-            Ready to discuss opportunities in AI/ML and innovative tech solutions? I'd love to hear from you!
-          </p>
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-8">Let's Connect & Collaborate</h2>
+            <p className="text-xl mb-12 opacity-90 max-w-3xl mx-auto">
+              Ready to discuss opportunities in AI/ML and innovative tech solutions? I'd love to hear from you!
+            </p>
+          </div>
           
-          <div className="flex flex-wrap justify-center gap-6 mb-12">
-            <Button variant="secondary" size="lg" className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-3 rounded-xl" asChild>
-              <a href="mailto:patnalarahul1809@gmail.com">
-                <Mail className="mr-2 h-5 w-5" />
-                Email Me
-              </a>
-            </Button>
-            <Button variant="secondary" size="lg" className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-3 rounded-xl" asChild>
-              <a href="https://github.com/rahul-1809" target="_blank" rel="noopener noreferrer">
-                <Github className="mr-2 h-5 w-5" />
-                GitHub
-              </a>
-            </Button>
-            <Button variant="secondary" size="lg" className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-3 rounded-xl" asChild>
-              <a href="https://www.linkedin.com/in/patnala-rahul-0ba801292/" target="_blank" rel="noopener noreferrer">
-                <Linkedin className="mr-2 h-5 w-5" />
-                LinkedIn
-              </a>
-            </Button>
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* Contact Form */}
+            <Card className="bg-white/10 backdrop-blur-md border-white/20">
+              <CardHeader>
+                <CardTitle className="text-white text-2xl">Get In Touch</CardTitle>
+                <CardDescription className="text-white/80">
+                  Send me a message and I'll get back to you as soon as possible.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <form onSubmit={handleContactSubmit} className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <Input
+                        name="name"
+                        placeholder="Your Name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        required
+                        className="bg-white/10 border-white/20 text-white placeholder:text-white/60"
+                      />
+                    </div>
+                    <div>
+                      <Input
+                        name="email"
+                        type="email"
+                        placeholder="Your Email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        className="bg-white/10 border-white/20 text-white placeholder:text-white/60"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <Input
+                      name="subject"
+                      placeholder="Subject"
+                      value={formData.subject}
+                      onChange={handleInputChange}
+                      required
+                      className="bg-white/10 border-white/20 text-white placeholder:text-white/60"
+                    />
+                  </div>
+                  <div>
+                    <Textarea
+                      name="message"
+                      placeholder="Your Message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
+                      rows={5}
+                      className="bg-white/10 border-white/20 text-white placeholder:text-white/60"
+                    />
+                  </div>
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-white text-purple-600 hover:bg-gray-100 px-8 py-3 rounded-xl"
+                  >
+                    {isSubmitting ? (
+                      'Sending...'
+                    ) : (
+                      <>
+                        <Send className="mr-2 h-5 w-5" />
+                        Send Message
+                      </>
+                    )}
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
+
+            {/* Contact Info */}
+            <div className="space-y-8">
+              <div>
+                <h3 className="text-2xl font-semibold mb-6">Other Ways to Reach Me</h3>
+                <div className="space-y-4">
+                  <Button variant="secondary" size="lg" className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-3 rounded-xl w-full justify-start" asChild>
+                    <a href="mailto:patnalarahul1809@gmail.com">
+                      <Mail className="mr-3 h-5 w-5" />
+                      patnalarahul1809@gmail.com
+                    </a>
+                  </Button>
+                  <Button variant="secondary" size="lg" className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-3 rounded-xl w-full justify-start" asChild>
+                    <a href="https://github.com/rahul-1809" target="_blank" rel="noopener noreferrer">
+                      <Github className="mr-3 h-5 w-5" />
+                      GitHub Profile
+                    </a>
+                  </Button>
+                  <Button variant="secondary" size="lg" className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-3 rounded-xl w-full justify-start" asChild>
+                    <a href="https://www.linkedin.com/in/patnala-rahul-0ba801292/" target="_blank" rel="noopener noreferrer">
+                      <Linkedin className="mr-3 h-5 w-5" />
+                      LinkedIn Profile
+                    </a>
+                  </Button>
+                </div>
+              </div>
+              
+              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">
+                <h4 className="text-lg font-semibold mb-3">Let's Collaborate!</h4>
+                <p className="text-white/80">
+                  I'm always interested in discussing new opportunities, innovative projects, and potential collaborations in AI/ML and software development.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
