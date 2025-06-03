@@ -294,7 +294,7 @@ const Index = () => {
                 <img
                   src="https://i.postimg.cc/Kj4X3S1D/Screenshot-2025-03-15-203330.png"
                   alt="Patnala Rahul"
-                  className="w-80 h-80 mx-auto rounded-3xl object-cover object-center border-4 border-white shadow-2xl"
+                  className="w-80 h-80 mx-auto rounded-3xl object-cover object-top border-4 border-white shadow-2xl"
                 />
               </div>
               
