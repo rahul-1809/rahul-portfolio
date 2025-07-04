@@ -76,11 +76,11 @@ const Index = () => {
     label: 'Contact'
   }];
   const skills = {
-    languages: ['C', 'C++', 'Python', 'HTML5', 'CSS', 'JavaScript'],
+    languages: ['C', 'C++', 'Python', 'HTML5', 'CSS', 'JavaScript', 'Bootstrap'],
     'frameworks & libraries': ['Flask', 'FastAPI', 'Streamlit', 'TensorFlow', 'NumPy', 'Pandas', 'Matplotlib', 'Seaborn'],
-    databases: ['MySQL'],
+    databases: ['MySQL', 'SQLite3'],
     tools: ['Git', 'GitHub', 'VS Code', 'Google Colab', 'Kaggle'],
-    concepts: ['Data Structures & Algorithms', 'OOP', 'Machine Learning', 'Deep Learning'],
+    concepts: ['Data Structures & Algorithms', 'OOP', 'Machine Learning', 'Deep Learning', 'NLP'],
     soft: ['Problem-Solving', 'Communication', 'Collaboration', 'Time Management', 'Adaptability']
   };
   const projects = [{
@@ -275,7 +275,7 @@ const Index = () => {
                   className="px-8 py-3 rounded-xl font-medium border-2 hover:bg-gray-50"
                   asChild
                 >
-                  <a href="https://drive.google.com/file/d/1xlH1TW5Hmd9vvHeHGk4gL0m2scUIhqva/view" target="_blank" rel="noopener noreferrer">
+                  <a href="https://drive.google.com/uc?export=download&id=1BpBRRvK2oyJHIgD8QWEvcQB0RQBFafsY" download="Rahul_Resume.pdf">
                     <Download className="mr-2 h-5 w-5" />
                     Download Resume
                   </a>
